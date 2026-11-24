@@ -1,0 +1,19 @@
+ktor:
+  deployment:
+    port: 28852
+  application:
+    modules:
+      - hotkitchen.ApplicationKt.module
+
+database:
+  url: "$DB_URL:jdbc:postgresql://localhost:5432/hotkitchen"
+  driver: "org.postgresql.Driver"
+  user: "$DB_USER:hotkitchen"
+  password: "$DB_PASSWORD:hotkitchen"
+
+jwt:
+  secret: "$JWT_SECRET:dev-only-secret-change-me-in-production"
+  issuer: "$JWT_ISSUER:http://0.0.0.0:28852/"
+  audience: "$JWT_AUDIENCE:http://0.0.0.0:28852/hotkitchen"
+  realm: "Access to HotKitchen"
+  expiresInMs: "$JWT_EXPIRES_MS:86400000"
